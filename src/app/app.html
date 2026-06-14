@@ -1,0 +1,224 @@
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" (click)="closeMenu()" aria-label="Cradle home">
+  <img class="brand-mark" src="cradle-mark.svg" alt="" aria-hidden="true" />
+  <span class="brand-word">CRADLE</span>
+</a>
+ 
+    <nav class="nav-desktop" aria-label="Primary">
+      @for (item of nav; track item.href) {
+        <a [href]="item.href">{{ item.label }}</a>
+      }
+      <a class="btn btn--primary nav-cta" href="#contact">Start a project</a>
+    </nav>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Toggle menu"
+      (click)="toggleMenu()">
+      <span [class.open]="menuOpen()"></span>
+    </button>
+  </div>
+
+  @if (menuOpen()) {
+    <nav class="nav-mobile" aria-label="Mobile">
+      @for (item of nav; track item.href) {
+        <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
+      }
+      <a class="btn btn--primary" href="#contact" (click)="closeMenu()">Start a project</a>
+    </nav>
+  }
+</header>
+
+<main id="top">
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">Cradle (Pty) Ltd · Gauteng, South Africa</p>
+        <h1>
+          We build the digital<br />
+          foundations businesses<br />
+          <span class="accent">grow from.</span>
+        </h1>
+        <p class="hero-lede">
+          A technology studio spanning web, cloud, infrastructure and mobile —
+          delivering end-to-end systems for the private and public sectors.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="#contact">Start a project</a>
+          <a class="btn btn--ghost" href="#work">See our work</a>
+        </div>
+        <p class="hero-slogan">“For the world we know not&nbsp;… we let go of the one we do.”</p>
+      </div>
+
+      <div class="hero-logo" data-reveal>
+        <img src="cradle-logo.svg" alt="Cradle logo — a rising sun over a horizon" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section id="services" class="section services">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">What we do</p>
+        <h2>Four disciplines, one delivery team.</h2>
+        <p class="section-sub">
+          From the first commit to the infrastructure it runs on, we cover the
+          full stack of building and shipping software.
+        </p>
+      </div>
+
+      <div class="service-grid">
+        @for (s of services; track s.index) {
+          <article class="service-card" data-reveal>
+            <span class="service-index">{{ s.index }}</span>
+            <h3>{{ s.title }}</h3>
+            <p class="service-blurb">{{ s.blurb }}</p>
+            <ul>
+              @for (p of s.points; track p) {
+                <li>{{ p }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- horizon divider -->
+  <div class="horizon" aria-hidden="true">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+      <path d="M0,52 Q600,18 1200,52" fill="none" stroke="var(--sun)" stroke-width="2" opacity="0.55" />
+    </svg>
+  </div>
+
+  <!-- ============ WORK ============ -->
+  <section id="work" class="section work">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Selected work</p>
+        <h2>Things we’ve shipped.</h2>
+        <p class="section-sub">
+          A snapshot of recent builds. Each one went from idea to a running,
+          deployed product.
+        </p>
+      </div>
+
+      <div class="work-grid">
+        @for (p of projects; track p.name) {
+          <article class="work-card" [class.is-open]="p.placeholder" data-reveal>
+            <div class="work-card-top">
+              <h3>{{ p.name }}</h3>
+              <span class="work-kind">{{ p.kind }}</span>
+            </div>
+            <p class="work-desc">{{ p.description }}</p>
+            @if (p.stack.length) {
+              <ul class="stack">
+                @for (t of p.stack; track t) {
+                  <li>{{ t }}</li>
+                }
+              </ul>
+            }
+            @if (p.placeholder) {
+              <a class="work-cta" href="#contact">Start the conversation →</a>
+            }
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section about">
+    <div class="container about-inner">
+      <div class="about-copy" data-reveal>
+        <p class="eyebrow">Our name</p>
+        <h2>Everything has to start somewhere.</h2>
+        <p>
+          A cradle is where things begin — the origin point, the place that
+          nurtures something into being. That is how we think about the work:
+          we build the digital foundations a business is raised on, from the
+          ground up.
+        </p>
+        <p>
+          The name also carries home with it. South Africa is the Cradle of
+          Humankind, and we are proudly built here in Gauteng — local in origin,
+          global in ambition.
+        </p>
+        <p class="about-slogan">
+          For the world we know not&nbsp;…<br />we let go of the one we do.
+        </p>
+      </div>
+      <ul class="about-stats" data-reveal>
+        <li><strong>4</strong><span>core disciplines</span></li>
+        <li><strong>End&nbsp;to&nbsp;end</strong><span>design, build &amp; deploy</span></li>
+        <li><strong>ZA</strong><span>based in Gauteng, SA</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section contact">
+    <div class="container contact-inner">
+      <div class="contact-copy" data-reveal>
+        <p class="eyebrow">Start a project</p>
+        <h2>Tell us what you’re building.</h2>
+        <p class="section-sub">
+          Share a few lines about your idea. We’ll reply with how we’d approach
+          it and what a first working version looks like.
+        </p>
+        <ul class="contact-meta">
+          <li><span>Email</span><a [href]="'mailto:' + contactEmail">{{ contactEmail }}</a></li>
+          <li><span>Where</span>Gauteng, South Africa</li>
+          <li><span>Code</span><a href="https://github.com/5wisH" target="_blank" rel="noopener">github.com/5wisH</a></li>
+        </ul>
+      </div>
+
+      <form class="contact-form" data-reveal (submit)="$event.preventDefault()">
+        <label>
+          <span>Name</span>
+          <input type="text" autocomplete="name" [value]="name()"
+                 (input)="name.set($any($event.target).value)" placeholder="Your name" />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" autocomplete="email" [value]="email()"
+                 (input)="email.set($any($event.target).value)" placeholder="you@company.com" />
+        </label>
+        <label>
+          <span>Project</span>
+          <textarea rows="4" [value]="message()"
+                    (input)="message.set($any($event.target).value)"
+                    placeholder="What are you trying to build?"></textarea>
+        </label>
+        <a class="btn btn--primary contact-send" [href]="mailto()">Send message</a>
+        <p class="form-note">Opens in your email app. A hosted form lands when the backend ships.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="brand-word">CRADLE</span>
+      <p>Digital foundations, built to last.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      @for (item of nav; track item.href) {
+        <a [href]="item.href">{{ item.label }}</a>
+      }
+    </nav>
+  </div>
+  <div class="container footer-base">
+    <span>© {{ year }} Cradle (Pty) Ltd</span>
+    <span>Gauteng, South Africa</span>
+  </div>
+</footer>

@@ -91,13 +91,6 @@
     </div>
   </section>
 
-  <!-- horizon divider -->
-  <div class="horizon" aria-hidden="true">
-    <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-      <path d="M0,52 Q600,18 1200,52" fill="none" stroke="var(--sun)" stroke-width="2" opacity="0.55" />
-    </svg>
-  </div>
-
   <!-- ============ WORK ============ -->
   <section id="work" class="section work">
     <div class="container">
@@ -165,8 +158,8 @@
 
   <!-- ============ CONTACT ============ -->
   <section id="contact" class="section contact">
-    <video class="contact-bg-video" autoplay muted loop playsinline preload="auto" poster="eagle.png">
-      <source src="eagleview.mp4" type="video/mp4" />
+    <video class="contact-bg-video" autoplay muted loop playsinline preload="auto" poster="/eagle.png">
+      <source src="/eagleview.mp4" type="video/mp4" />
     </video>
     <div class="container contact-inner">
       <div class="contact-copy" data-reveal>
@@ -222,18 +215,33 @@
   </section>
 </main>
 
+<!-- horizon divider -->
+<div class="horizon" aria-hidden="true">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+    <path d="M0,52 Q600,18 1200,52" fill="none" stroke="var(--sun)" stroke-width="2" opacity="0.55" />
+  </svg>
+</div>
+
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand">
       <span class="brand-word">CRADLE</span>
       <p>Digital foundations, built to last.</p>
+      <ul id="footer-contact" class="footer-contact">
+        <li><span>Email</span><a [href]="'mailto:' + contactEmail">{{ contactEmail }}</a></li>
+        <li><span>Where</span>Gauteng, South Africa</li>
+        <li><span>Code</span><a href="https://github.com/5wisH" target="_blank" rel="noopener">github.com/5wisH</a></li>
+      </ul>
     </div>
-    <nav class="footer-nav" aria-label="Footer">
-      @for (item of nav; track item.href) {
-        <a [href]="item.href">{{ item.label }}</a>
-      }
-    </nav>
+    <div class="footer-links">
+      <nav class="footer-nav" aria-label="Footer">
+        @for (item of nav; track item.href) {
+          <a [href]="item.href">{{ item.label }}</a>
+        }
+      </nav>
+      <img class="footer-logo" src="cradle-logo.svg" alt="Cradle logo" />
+    </div>
   </div>
   <div class="container footer-base">
     <span>© {{ year }} Cradle (Pty) Ltd</span>

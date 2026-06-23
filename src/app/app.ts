@@ -55,7 +55,7 @@ export class App implements AfterViewInit {
     { label: 'Services', href: '#services' },
     { label: 'Work', href: '#work' },
     { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Contact', href: '#footer-contact' },
   ];
 
   // ---- Services (from the CIPC annexure: scope of business) ----
@@ -156,6 +156,26 @@ export class App implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const els = this.host.nativeElement.querySelectorAll('[data-reveal]');
+    const contactVideo = this.host.nativeElement.querySelector(
+      '.contact-bg-video'
+    ) as HTMLVideoElement | null;
+
+    if (contactVideo) {
+      contactVideo.muted = true;
+      contactVideo.loop = true;
+      contactVideo.playsInline = true;
+
+      const playContactVideo = () => {
+        void contactVideo.play().catch(() => undefined);
+      };
+
+      if (contactVideo.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        playContactVideo();
+      } else {
+        contactVideo.addEventListener('canplay', playContactVideo, { once: true });
+      }
+    }
+
     const revealAll = () =>
       els.forEach((el: Element) => el.classList.add('is-visible'));
 

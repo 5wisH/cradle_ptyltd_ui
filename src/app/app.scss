@@ -474,9 +474,43 @@
 .footer-inner { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; align-items: flex-start; }
 .footer-brand .brand-word { font-family: var(--display); font-weight: 700; letter-spacing: 0.28em; }
 .footer-brand p { color: var(--mist); margin: 0.6rem 0 0; }
+.footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 1.1rem 0 0;
+  display: grid;
+  gap: 0.65rem;
+}
+.footer-contact li {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 1rem;
+  align-items: center;
+  color: var(--mist);
+  font-size: 0.95rem;
+}
+.footer-contact span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist-dim);
+}
+.footer-contact a:hover { color: var(--sun); }
+.footer-links {
+  display: grid;
+  justify-items: end;
+  gap: 1.25rem;
+}
 .footer-nav { display: flex; flex-wrap: wrap; gap: 1.4rem; }
 .footer-nav a { color: var(--mist); font-size: 0.95rem; }
 .footer-nav a:hover { color: var(--white); }
+.footer-logo {
+  width: 180px;
+  height: auto;
+  opacity: 0.88;
+  border-radius: var(--radius-sm);
+}
 .footer-base {
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
   margin-top: 2.2rem; padding-top: 1.4rem;
@@ -493,6 +527,7 @@
 @media (max-width: 720px) {
   .nav-desktop { display: none; }
   .menu-toggle { display: block; }
+  .footer-links { justify-items: start; }
   .service-grid,
   .work-grid { grid-template-columns: 1fr; }
 }

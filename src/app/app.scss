@@ -129,6 +129,12 @@
   position: relative;
   z-index: 2;
   max-width: 720px;
+  margin-left: 150px;
+  margin-right: auto;
+  text-align: left;
+}
+.hero-copy {
+  text-align: left;
 }
 .hero h1 {
   font-size: clamp(2.4rem, 5.4vw, 4rem);
@@ -506,6 +512,7 @@
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 900px) {
+  .hero-inner { margin-left: 0; }
   .about-inner { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {

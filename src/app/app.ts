@@ -39,8 +39,9 @@ export class App implements AfterViewInit {
   protected readonly name = signal('');
   protected readonly email = signal('');
   protected readonly message = signal('');
+  protected readonly composeOpen = signal(false);
   // Replace with your real business inbox before going live.
-  protected readonly contactEmail = 'hello@cradle.co.za';
+  protected readonly contactEmail = 'feharnkiwane22@gmail.com';
 
   protected readonly mailto = computed(() => {
     const subject = encodeURIComponent(`Project enquiry — ${this.name() || 'New visitor'}`);
@@ -143,6 +144,14 @@ export class App implements AfterViewInit {
   }
   closeMenu() {
     this.menuOpen.set(false);
+  }
+
+  openCompose() {
+    this.composeOpen.set(true);
+  }
+
+  closeCompose() {
+    this.composeOpen.set(false);
   }
 
   ngAfterViewInit(): void {
